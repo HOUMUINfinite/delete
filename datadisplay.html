@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>车辆维修次数统计</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <canvas id="maintenanceChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('maintenanceChart').getContext('2d');
+        
+        const data = {
+            labels: ['2023/12', '2024/01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'],
+            datasets: [
+                {
+                    label: 'SC5070',
+                    data: [0, 9, 8, 12, 3, 7, 13, 12, 17, 7, 8, 0],
+                    borderColor: '#FF6384'
+                },
+                {
+                    label: 'SK4877',
+                    data: [0, 17, 12, 13, 11, 8, 18, 11, 8, 21, 35, 5],
+                    borderColor: '#36A2EB'
+                },
+                {
+                    label: 'ST4791',
+                    data: [0, 4, 7, 12, 3, 4, 12, 13, 11, 8, 10, 5],
+                    borderColor: '#FFCE56'
+                },
+                {
+                    label: 'SU3428',
+                    data: [0, 2, 7, 13, 8, 7, 13, 9, 8, 14, 12, 0],
+                    borderColor: '#4BC0C0'
+                },
+                {
+                    label: 'SW2475',
+                    data: [1, 13, 9, 7, 12, 12, 10, 7, 8, 8, 4, 4],
+                    borderColor: '#9966FF'
+                },
+                {
+                    label: 'TE3947',
+                    data: [0, 9, 13, 7, 3, 11, 14, 13, 8, 13, 8, 0],
+                    borderColor: '#FF9F40'
+                },
+                {
+                    label: 'TW5029',
+                    data: [0, 16, 11, 7, 26, 16, 9, 9, 10, 9, 6, 0],
+                    borderColor: '#FF6384'
+                },
+                {
+                    label: 'TX3080',
+                    data: [0, 16, 8, 8, 14, 5, 8, 8, 6, 13, 0, 0],
+                    borderColor: '#4BC0C0'
+                },
+                {
+                    label: 'UB1294',
+                    data: [0, 8, 11, 13, 12, 8, 12, 10, 13, 8, 8, 2],
+                    borderColor: '#9966FF'
+                },
+                {
+                    label: 'SU4438',
+                    data: [0, 9, 4, 12, 4, 8, 8, 7, 8, 5, 13, 1],
+                    borderColor: '#FF9F40'
+                }
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '车辆每月维修次数统计'
+                    },
+                    legend: {
+                        position: 'right'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '维修次数'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '月份'
+                        }
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>
